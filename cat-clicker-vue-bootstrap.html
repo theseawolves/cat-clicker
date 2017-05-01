@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Clicker</title>
+  <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.0/css/bootstrap.min.css">
+  
+</head>
+
+<body>
+  <div id="app" style="margin-top:20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+          <li role="presentation" :class="{ active: cat.isActive}" v-for="cat in cats"  @click="handleClick(cat)">
+              <a href="#">
+                {{cat.name}} <span class="badge">{{cat.clickCounter}}</span>          
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-9">
+          <div class="media">
+            <div class="media-left">
+              <a href="#" @click="clickCounter()">
+                <img class="media-object" :src="currentCat.imgLink" alt="cat">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{currentCat.name}}</h4>
+              点击量：<code>{{currentCat.clickCounter}}</code>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdn.staticfile.org/handlebars.js/4.0.6/handlebars.js"></script>
+  <script src="https://cdn.staticfile.org/vue/2.2.6/vue.js"></script>
+  <!--<script src="http://cdn.staticfile.org/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        currentCat: {},
+        cats: [{
+            id: 1,
+            name: '可爱的小猫咪1',
+            clickCounter: 0,
+            imgLink: './images/cat1.jpg',
+            isActive: true
+          },
+          {
+            id: 2,
+            name: '可爱的小猫咪2',
+            clickCounter: 0,
+            imgLink: './images/cat2.jpg',
+            isActive: false
+          },
+          {
+            id: 3,
+            name: '可爱的小猫咪3',
+            clickCounter: 0,
+            imgLink: './images/cat3.jpg',
+            isActive: false
+          },
+          {
+            id: 4,
+            name: '可爱的小猫咪4',
+            clickCounter: 0,
+            imgLink: './images/cat4.jpg',
+            isActive: false
+          },
+          {
+            id: 5,
+            name: '可爱的小猫咪5',
+            clickCounter: 0,
+            imgLink: './images/cat5.jpg',
+            isActive: false
+          },
+          {
+            id: 6,
+            name: '可爱的小猫咪6',
+            clickCounter: 0,
+            imgLink: './images/cat6.jpg',
+            isActive: false
+          }
+        ]
+      },
+      methods: {
+        clickCounter: function() {
+          this.currentCat.clickCounter++
+        },
+        handleClick: function(cat) {
+          this.currentCat = cat
+          this.currentCat.isActive = true
+          for (var i = 0; i < this.cats.length; i++) {
+            if ( this.cats[i].id !== cat.id ) {
+              this.cats[i].isActive = false
+            }
+          }
+        },
+        
+      },
+      mounted: function () {
+        this.currentCat = this.cats[0]
+      }
+
+    })
+  </script>
+</body>
+
+</html>
