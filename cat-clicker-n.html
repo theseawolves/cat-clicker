@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Clicker</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script id="entry-template" type="text/x-handlebars-template">
+    <div class="container">
+      {{#each this}}
+      <div class="item">
+        <h3>{{name}}</h3>
+        <span class="clickCounter">{{clickCounter}}</span>
+        <div  class="img-cat">
+          <img src="{{imgLink}}" alt="cat">
+        </div>
+      </div>
+    {{/each}}
+    </div>
+  </script>
+
+
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdn.staticfile.org/handlebars.js/4.0.6/handlebars.js"></script>
+  <script>
+    $(function () {
+      /**
+      1、显示n只小猫照片
+      2、点击+1
+      **/
+
+      var model = [{
+          name: '可爱的小猫咪1',
+          clickCounter: 0,
+          imgLink: './images/cat1.jpg'
+        },
+        {
+          name: '可爱的小猫咪2',
+          clickCounter: 0,
+          imgLink: './images/cat2.jpg'
+        },
+        {
+          name: '可爱的小猫咪3',
+          clickCounter: 0,
+          imgLink: './images/cat3.jpg'
+        },
+        {
+          name: '可爱的小猫咪4',
+          clickCounter: 0,
+          imgLink: './images/cat4.jpg'
+        },
+        {
+          name: '可爱的小猫咪5',
+          clickCounter: 0,
+          imgLink: './images/cat5.jpg'
+        },
+        {
+          name: '可爱的小猫咪6',
+          clickCounter: 0,
+          imgLink: './images/cat6.jpg'
+        },
+        {
+          name: '可爱的小猫咪6',
+          clickCounter: 0,
+          imgLink: './images/cat6.jpg'
+        }
+      ]
+
+      var source   = $("#entry-template").html();
+      var template = Handlebars.compile(source);
+      $('#app').html( template(model) )
+
+
+      $('.item').on('click', function (e) {
+         if ( e.target.nodeName === 'IMG' ) {
+           var clickCounter = parseInt( $(this).find('.clickCounter').html() )
+           clickCounter++
+           $(this).find('.clickCounter').html( clickCounter )
+         }
+      })
+
+
+    })
+  </script>
+</body>
+
+</html>
