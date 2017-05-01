@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Clicker</title>
+</head>
+<body>
+  <div class="container">
+    <div class="item">
+      <h3>可爱的小猫咪1</h3>
+      <span class="clickCounter1">0</span>
+      <div>
+        <img id="img-cat1" src="./images/cat1.jpg" alt="cat">
+      </div>
+    </div>
+
+    <div class="item">
+      <h3>可爱的小猫咪2</h3>
+      <span class="clickCounter2">0</span>
+      <div>
+        <img id="img-cat2" src="./images/cat2.jpg" alt="cat">
+      </div>
+
+    </div>
+  </div>
+
+  
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+  <script>
+    $(function(){
+      /**
+      1、显示2只小猫照片
+      2、点击+1
+      **/
+      var clickCounter1 = 0 
+      var clickCounter2 = 0 
+
+      $('#img-cat1').on('click',function(){
+        clickCounter1++
+        $('.clickCounter1').html( clickCounter1 )
+      })
+
+      $('#img-cat2').on('click',function(){
+        clickCounter2++
+        $('.clickCounter2').html( clickCounter2 )
+      })
+
+    })
+  </script>
+</body>
+</html>
