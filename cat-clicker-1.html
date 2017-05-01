@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat Clicker</title>
+</head>
+<body>
+  <div class="container">
+    <h3>可爱的小猫咪</h3>
+    <span class="clickCounter">0</span>
+    <div>
+      <img src="./images/cat1.jpg" alt="cat">
+    </div>
+  </div>
+
+  
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+  <script>
+    $(function(){
+      /**
+      1、显示一只小猫照片
+      2、点击+1
+      **/
+      var clickCounter = 0 
+
+      $('img').on('click',function(){
+        clickCounter++
+        $('.clickCounter').html( clickCounter )
+      })
+
+    })
+  </script>
+</body>
+</html>
